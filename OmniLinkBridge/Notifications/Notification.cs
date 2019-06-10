@@ -19,6 +19,7 @@ namespace OmniLinkBridge.Notifications
 
         public static void Notify(string source, string description, NotificationPriority priority = NotificationPriority.Normal)
         {
+            log.Debug($"{source} {description} {priority}");
             Parallel.ForEach(providers, (provider) =>
             {
                 try

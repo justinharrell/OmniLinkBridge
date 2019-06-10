@@ -24,6 +24,7 @@ namespace OmniLinkBridge
             Global.controller_port = ValidatePort(settings, "controller_port");
             Global.controller_key1 = settings["controller_key1"];
             Global.controller_key2 = settings["controller_key2"];
+            Global.controller_name = settings["controller_name"] ?? "OmniLinkBridge";
 
             // Controller Time Sync
             Global.time_sync = ValidateYesNo(settings, "time_sync");
@@ -73,6 +74,7 @@ namespace OmniLinkBridge
             // Email Notifications
             Global.mail_server = settings["mail_server"];
             Global.mail_port = ValidatePort(settings, "mail_port");
+            Global.mail_tls = ValidateYesNo(settings, "mail_tls");
             Global.mail_username = settings["mail_username"];
             Global.mail_password = settings["mail_password"];
             Global.mail_from = ValidateMailFrom(settings, "mail_from");

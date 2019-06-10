@@ -27,7 +27,7 @@ namespace OmniLinkBridge
             Global.running = true;
 
             log.Debug("Starting up server " +
-                Assembly.GetExecutingAssembly().GetName().Version.ToString());
+                Assembly.GetExecutingAssembly().GetName().Version.ToString() + " - " + Global.controller_name);
 
             // Controller connection
             modules.Add(omnilink = new OmniLinkII(Global.controller_address, Global.controller_port, Global.controller_key1, Global.controller_key2));

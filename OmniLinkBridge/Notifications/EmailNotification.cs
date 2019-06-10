@@ -17,19 +17,20 @@ namespace OmniLinkBridge.Notifications
                 MailMessage mail = new MailMessage();
                 mail.From = Global.mail_from;
                 mail.To.Add(address);
-                mail.Subject = "OmniLinkBridge - " + source;
+                mail.Subject = Global.controller_name + " - " + source;
                 mail.Body = source + ": " + description;
 
                 using (SmtpClient smtp = new SmtpClient(Global.mail_server, Global.mail_port))
                 {
+                    smtp.EnableSsl = Global.mail_tls;
                     if (!string.IsNullOrEmpty(Global.mail_username))
                     {
                         smtp.UseDefaultCredentials = false;
                         smtp.Credentials = new NetworkCredential(Global.mail_username, Global.mail_password);
                     }
-
                     try
                     {
+                        log.Debug($"Sending mail to {mail.To}");
                         smtp.Send(mail);
                     }
                     catch (Exception ex)
